@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace StudentAdminPortal_API.Models
 {
@@ -10,8 +11,10 @@ namespace StudentAdminPortal_API.Models
         public string lastname { get; set; } 
         public DateTime DOB { get; set; }  
         public string Email { get; set; }
-        public long Mobile { get; set; }   
+        public long Mobile { get; set; }
+        [AllowNull]
         public string ProfileImgUrl { get; set; }
+        
         public Guid GenderID { get; set; }
         //Navigation Properties
         public Gender Gender { get; set; }
