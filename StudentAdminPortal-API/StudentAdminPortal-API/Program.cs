@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using StudentAdminPortal_API.Data;
+using StudentAdminPortal_API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,10 @@ builder.Services.AddSwaggerGen();
 //dependency injection of DBContext.
 builder.Services.AddDbContext<StudentAdminContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("StudentAdminPortalConn")));
+
+//when Istudentrepo is accessed, object of which class needs to be created shud be specified here.
+//here when IStudentRepository is accessed in StudentController, I need to create object of StudentImplementRepository.
+builder.Services.AddScoped<IStudentRepository, StudentImplementRepository>();
 
 var app = builder.Build();
 
