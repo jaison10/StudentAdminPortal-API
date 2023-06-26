@@ -14,7 +14,7 @@ namespace StudentAdminPortal_API.Models
         public long? Mobile { get; set; }
         [AllowNull]
         public string? ProfileImgUrl { get; set; }
-        
+         
         public Guid GenderID { get; set; }
         //Navigation Properties
         public Gender Gender { get; set; }
