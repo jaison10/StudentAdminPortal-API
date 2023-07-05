@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using StudentAdminPortal_API.Data;
 using StudentAdminPortal_API.Repositories;
@@ -19,6 +20,11 @@ builder.Services.AddDbContext<StudentAdminContext>(options =>
 //when Istudentrepo is accessed, object of which class needs to be created shud be specified here.
 //here when IStudentRepository is accessed in StudentController, I need to create object of StudentImplementRepository.
 builder.Services.AddScoped<IStudentRepository, StudentImplementRepository>();
+
+//Here specifying which auto mapping needs to be considered.
+//Here "typeof(Program).Assembly" will point to the parent of Program file which includes all the files 
+//and all the Profiles present in this path will be considered for auto mapping.
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 var app = builder.Build();
 
