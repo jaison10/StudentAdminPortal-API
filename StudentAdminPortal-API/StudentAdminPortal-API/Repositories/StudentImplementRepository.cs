@@ -12,10 +12,10 @@ namespace StudentAdminPortal_API.Repositories
         {
             this.context = context;
         }
-        public List<Student> GetStudents()
+        public async Task<List<Student>> GetStudents()
         {
             //return context.Student.ToList();
-            return context.Student.Include(nameof(Gender)).Include(nameof(Address)).ToList();
+            return await context.Student.Include(nameof(Gender)).Include(nameof(Address)).ToListAsync();
             //the Include also returns the navigation details from other table belonging to the student.
         }
     }
