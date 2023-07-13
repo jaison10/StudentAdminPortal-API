@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\StudentAdminPortal-API"
+    "\\StudentAdminPortal-API",
+    "\\StudentAdminPortal-API\\StudentAdminPortal-API",
+    "\\StudentAdminPortal-API\\StudentAdminPortal-API\\Controllers"
   ],
-  "SelectedNode": "\\StudentAdminPortal-API\\StudentAdminPortal-API.sln",
+  "SelectedNode": "\\StudentAdminPortal-API\\StudentAdminPortal-API\\Controllers\\StudentController.cs",
   "PreviewInSolutionExplorer": false
 }

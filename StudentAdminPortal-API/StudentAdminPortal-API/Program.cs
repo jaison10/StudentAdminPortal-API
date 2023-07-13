@@ -26,6 +26,19 @@ builder.Services.AddScoped<IStudentRepository, StudentImplementRepository>();
 //and all the Profiles present in this path will be considered for auto mapping.
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
+//Adding CORS policy to let others fetch data from this running server.
+builder.Services.AddCors((options) =>
+{
+    options.AddPolicy("AngularApp", (builder) =>
+    {
+        builder.WithOrigins("http://localhost:4200") //accepting requests running in this host.- a slash shudnt be given at the end.
+        .AllowAnyHeader()
+        .WithMethods("POST", "GET", "PUT", "DELETE") //accepting these 4 types of requests.
+        .WithHeaders("*"); //accepting all headers.
+    });
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -36,6 +49,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AngularApp"); //using the above defined CORS
 
 app.UseAuthorization();
 
