@@ -59,8 +59,21 @@ namespace StudentAdminPortal_API.Controllers
             //return Ok(modelStudents);
 
             //The entire above part of manual mapping can be handled by auto mapper created under Profiles and using it as below:
-            return  Ok(mapper.Map<List<DomainModels.Student>>(students));
+            return Ok(mapper.Map<List<DomainModels.Student>>(students));
             //here the students which is a DataModel will be converted to DomainModels.Student
+        }
+        //fetching details of a specific student.
+        [HttpGet]
+        [Route("[controller]/{studentId:guid}")] //name for which route this has to be executed. 
+        public async Task<IActionResult> GetStudent()
+        {
+            var givenStudentID = [FromRouteAttribute] studentId;
+
+            var student = await studentRepository.GetStudent([FromRouteAttribute] studentId);
+            if (student != null)
+            {
+                return Ok(mapper.Map<DomainModels.Student>(student));
+            }
         }
     }
 }
