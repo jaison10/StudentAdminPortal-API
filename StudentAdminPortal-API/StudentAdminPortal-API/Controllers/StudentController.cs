@@ -11,6 +11,7 @@ namespace StudentAdminPortal_API.Controllers
     {
         private readonly IStudentRepository studentRepository;
         private readonly IMapper mapper;
+        private RouteAttribute routeAttribute;
 
         public StudentController(IStudentRepository studentRepository, IMapper mapper)
         {
@@ -67,13 +68,14 @@ namespace StudentAdminPortal_API.Controllers
         [Route("[controller]/{studentId:guid}")] //name for which route this has to be executed. 
         public async Task<IActionResult> GetStudent()
         {
-            var givenStudentID = [FromRouteAttribute] studentId;
+        routeAttribute: FromRouteAttribute guid studentId;
 
-            var student = await studentRepository.GetStudent([FromRouteAttribute] studentId);
-            if (student != null)
-            {
-                return Ok(mapper.Map<DomainModels.Student>(student));
-            }
+            //var student = await studentRepository.GetStudent([FromRouteAttribute] studentId);
+            //if (student != null)
+            //{
+            //    return Ok(mapper.Map<DomainModels.Student>(student));
+            //}
+            return null;
         }
     }
 }
