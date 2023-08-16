@@ -66,15 +66,15 @@ namespace StudentAdminPortal_API.Controllers
         //fetching details of a specific student.
         [HttpGet]
         [Route("[controller]/{studentId:guid}")] //name for which route this has to be executed. 
-        public async Task<IActionResult> GetStudent()
+        public async Task<IActionResult> GetStudent(Guid studentId)
         {
-        routeAttribute: FromRouteAttribute guid studentId;
-
+            
             //var student = await studentRepository.GetStudent([FromRouteAttribute] studentId);
-            //if (student != null)
-            //{
-            //    return Ok(mapper.Map<DomainModels.Student>(student));
-            //}
+            var student = await studentRepository.GetStudent(studentId);
+            if (student != null)
+            {
+                return Ok(mapper.Map<DomainModels.Student>(student));
+            }
             return null;
         }
     }
