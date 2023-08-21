@@ -22,7 +22,7 @@ namespace StudentAdminPortal_API.Controllers
         [HttpGet]
         [Route("[controller]")] //name for which route this has to be executed. 
         public async Task<IActionResult> GetAllStudents()
-        {
+       {
             var students = await studentRepository.GetStudents(); //getting list of all students from db
             //the above is Data model -data from server. This we arent exposing to the user. Instead converting to DomainModel
 
@@ -78,6 +78,15 @@ namespace StudentAdminPortal_API.Controllers
             {
                 return NotFound();
             }
+        }
+        public async Task<IActionResult> GetAllGenders()
+        {
+            var genders = await studentRepository.GetAllGenders();
+            if(genders == null)
+            {
+                return NotFound();
+            }
+            return Ok(mapper.Map<List<DomainModels.Gender>>(genders));
         }
     }
 }
