@@ -79,14 +79,5 @@ namespace StudentAdminPortal_API.Controllers
                 return NotFound();
             }
         }
-        public async Task<IActionResult> GetAllGenders()
-        {
-            var genders = await studentRepository.GetAllGenders();
-            if(genders == null)
-            {
-                return NotFound();
-            }
-            return Ok(mapper.Map<List<DomainModels.Gender>>(genders));
-        }
     }
 }

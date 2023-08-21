@@ -26,7 +26,7 @@ namespace StudentAdminPortal_API.Repositories
         }
         public async Task<List<Gender>> GetAllGenders()
         {
-            return await context.Gender.Include(nameof(Gender)).ToListAsync();
+            return await context.Gender.ToListAsync();
         }
 
     }
