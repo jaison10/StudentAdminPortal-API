@@ -82,9 +82,9 @@ namespace StudentAdminPortal_API.Controllers
         //Update values.
         [HttpPut]
         [Route("[controller]/{studentId:guid}")]
-        public async Task<IActionResult> UpdateStudentDetails([FromRoute] Guid studentId, [FromBody] DomainModels.RequestStudent studentDetails)
+        public async Task<IActionResult> UpdateStudent([FromRoute] Guid studentId, [FromBody] DomainModels.RequestStudent studentDetails)
         {
-            var updatedStudent = UpdateStudentDetails(studentId, studentDetails);
+            var updatedStudent = await studentRepository.UpdateStudentDetails(studentId, studentDetails);
             if(updatedStudent != null)
             {
                 return Ok(mapper.Map<DomainModels.Student>(updatedStudent));

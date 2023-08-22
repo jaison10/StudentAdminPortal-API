@@ -41,6 +41,7 @@ namespace StudentAdminPortal_API.Repositories
                 studentExistingDet.DOB = studentDetails.DOB;
                 studentExistingDet.Address.PhysicalAddress = studentDetails.PhysicalAddress;
                 studentExistingDet.Address.PostalAddress = studentDetails.PostalAddress;
+                studentExistingDet.Mobile = studentDetails.Mobile;
                 studentExistingDet.GenderID = studentDetails.GenderID;
 
                 await context.SaveChangesAsync();
