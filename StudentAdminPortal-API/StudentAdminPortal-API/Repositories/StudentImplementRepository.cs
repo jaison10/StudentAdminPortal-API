@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StudentAdminPortal_API.Data;
+using DomainModels = StudentAdminPortal_API.DomainModels;
 using StudentAdminPortal_API.Models;
+using System.Formats.Asn1;
 
 namespace StudentAdminPortal_API.Repositories
 {
@@ -27,6 +29,26 @@ namespace StudentAdminPortal_API.Repositories
         public async Task<List<Gender>> GetAllGenders()
         {
             return await context.Gender.ToListAsync();
+        }
+        public async Task<Student> UpdateStudentDetails(Guid studentId, DomainModels.RequestStudent studentDetails)
+        {
+            var studentExistingDet = await GetStudent(studentId);
+            if(studentExistingDet != null)
+            {
+                studentExistingDet.firstname = studentDetails.firstname;
+                studentExistingDet.lastname = studentDetails.firstname;
+                studentExistingDet.DOB = studentDetails.DOB;
+                studentExistingDet.Address.PhysicalAddress = studentDetails.PhysicalAddress;
+                studentExistingDet.Address.PostalAddress = studentDetails.PostalAddress;
+                studentExistingDet.GenderID = studentDetails.GenderID;
+
+                context.SaveChangesAsync();
+                return studentExistingDet;
+            }
+            else
+            {
+                return null;
+            }
         }
 
     }

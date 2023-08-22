@@ -3,6 +3,7 @@ using DomainModels = StudentAdminPortal_API.DomainModels;
 using StudentAdminPortal_API.Repositories;
 using System.Net.NetworkInformation;
 using AutoMapper;
+using StudentAdminPortal_API.DomainModels;
 
 namespace StudentAdminPortal_API.Controllers
 {
@@ -78,6 +79,13 @@ namespace StudentAdminPortal_API.Controllers
             {
                 return NotFound();
             }
+        }
+        //Update values.
+        [HttpPatch]
+        [Route("[controller]")]
+        public async Task<IActionResult> UpdateStudentDetails([FromRoute] Guid studentId, [FromBody] RequestStudent studentDetails)
+        {
+
         }
     }
 }

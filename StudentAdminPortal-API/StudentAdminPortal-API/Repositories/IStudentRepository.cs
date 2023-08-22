@@ -1,4 +1,5 @@
-﻿using StudentAdminPortal_API.Models;
+﻿using DomainModels = StudentAdminPortal_API.DomainModels;
+using StudentAdminPortal_API.Models;
 
 namespace StudentAdminPortal_API.Repositories
 {
@@ -8,5 +9,6 @@ namespace StudentAdminPortal_API.Repositories
         //Method declaration to fetch a specific student info.
         Task<Student> GetStudent(Guid studentId);
         Task<List<Gender>> GetAllGenders();
+        Task<Student> UpdateStudentDetails(Guid studentId, DomainModels.RequestStudent requestStudentDetails);
     }
 }
