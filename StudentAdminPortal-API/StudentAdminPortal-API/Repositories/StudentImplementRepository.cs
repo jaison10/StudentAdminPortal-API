@@ -36,13 +36,14 @@ namespace StudentAdminPortal_API.Repositories
             if(studentExistingDet != null)
             {
                 studentExistingDet.firstname = studentDetails.firstname;
-                studentExistingDet.lastname = studentDetails.firstname;
+                studentExistingDet.lastname = studentDetails.lastname;
+                studentExistingDet.Email = studentDetails.Email;
                 studentExistingDet.DOB = studentDetails.DOB;
                 studentExistingDet.Address.PhysicalAddress = studentDetails.PhysicalAddress;
                 studentExistingDet.Address.PostalAddress = studentDetails.PostalAddress;
                 studentExistingDet.GenderID = studentDetails.GenderID;
 
-                context.SaveChangesAsync();
+                await context.SaveChangesAsync();
                 return studentExistingDet;
             }
             else
