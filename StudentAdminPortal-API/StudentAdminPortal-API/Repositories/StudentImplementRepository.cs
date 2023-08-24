@@ -24,7 +24,7 @@ namespace StudentAdminPortal_API.Repositories
         public async Task<Student> GetStudent(Guid studentId)
         {
             return await context.Student.Include(nameof(Gender)).Include(nameof(Address))
-                .FirstOrDefaultAsync(x=> x.Id == studentId);  //returns either the first found or NULL(default)
+                .FirstOrDefaultAsync(x => x.Id == studentId);  //returns either the first found or NULL(default)
         }
         public async Task<List<Gender>> GetAllGenders()
         {
@@ -33,7 +33,7 @@ namespace StudentAdminPortal_API.Repositories
         public async Task<Student> UpdateStudentDetails(Guid studentId, DomainModels.RequestStudent studentDetails)
         {
             var studentExistingDet = await GetStudent(studentId);
-            if(studentExistingDet != null)
+            if (studentExistingDet != null)
             {
                 studentExistingDet.firstname = studentDetails.firstname;
                 studentExistingDet.lastname = studentDetails.lastname;
@@ -52,6 +52,22 @@ namespace StudentAdminPortal_API.Repositories
                 return null;
             }
         }
+        public async Task<Boolean> DeleteAStudent(Guid studentId)
+        {
+            var studentExistingDet = await GetStudent(studentId);
+            if (studentExistingDet != null)
+            {
+                //await context.Remove<Student>(studentExistingDet);
+                //await context.Student.Remove(studentExistingDet);
+                //await context.Student.ExecuteDeleteAsync();
+                await context.Student.Where(x => x.Id == studentId).ExecuteDeleteAsync();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
+        }
     }
 }

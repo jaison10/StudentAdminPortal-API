@@ -94,5 +94,12 @@ namespace StudentAdminPortal_API.Controllers
                 return null;
             }
         }
+        //Delete a student
+        [HttpDelete]
+        [Route("[controller]/{studentId:guid}")]
+        public async Task<Boolean>DeleteStudent([FromRoute] Guid studentId)
+        {
+            return await this.studentRepository.DeleteAStudent(studentId);
+        }
     }
 }
