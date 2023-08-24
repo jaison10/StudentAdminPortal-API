@@ -52,19 +52,24 @@ namespace StudentAdminPortal_API.Repositories
                 return null;
             }
         }
-        public async Task<int> DeleteAStudent(Guid studentId)
+        public async Task<Student> DeleteAStudent(Guid studentId)
         {
             var studentExistingDet = await GetStudent(studentId);
             if (studentExistingDet != null)
             {
-                //await context.Remove<Student>(studentExistingDet);
-                //await context.Student.Remove(studentExistingDet);
-                //await context.Student.ExecuteDeleteAsync();
-                return await context.Student.Where(x => x.Id == studentId).ExecuteDeleteAsync();
+                //await context.Student.Where(x => x.Id == studentId).ExecuteDeleteAsync();
+
+                //OR
+                //above can be done which itself will search for the item and delete. Operations can be done using the return value that shows how many rows deleted.
+                //here this process is done as I need the student details in the front-end.
+                context.Student.Remove(studentExistingDet);
+                await context.SaveChangesAsync();
+
+                return studentExistingDet;
             }
             else
             {
-                return -1;
+                return null;
             }
 
         }

@@ -3,6 +3,7 @@ using DomainModels = StudentAdminPortal_API.DomainModels;
 using StudentAdminPortal_API.Repositories;
 using System.Net.NetworkInformation;
 using AutoMapper;
+using StudentAdminPortal_API.DomainModels;
 
 namespace StudentAdminPortal_API.Controllers
 {
@@ -97,9 +98,17 @@ namespace StudentAdminPortal_API.Controllers
         //Delete a student
         [HttpDelete]
         [Route("[controller]/{studentId:guid}")]
-        public async Task<int>DeleteStudent([FromRoute] Guid studentId)
+        public async Task<IActionResult>DeleteStudent([FromRoute] Guid studentId)
         {
-            return await this.studentRepository.DeleteAStudent(studentId);
+            var student =  await this.studentRepository.DeleteAStudent(studentId);
+            if(student != null)
+            {
+                return Ok(mapper.Map<DomainModels.Student>(student));
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }
