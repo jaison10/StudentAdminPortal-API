@@ -52,7 +52,7 @@ namespace StudentAdminPortal_API.Repositories
                 return null;
             }
         }
-        public async Task<Boolean> DeleteAStudent(Guid studentId)
+        public async Task<int> DeleteAStudent(Guid studentId)
         {
             var studentExistingDet = await GetStudent(studentId);
             if (studentExistingDet != null)
@@ -60,12 +60,11 @@ namespace StudentAdminPortal_API.Repositories
                 //await context.Remove<Student>(studentExistingDet);
                 //await context.Student.Remove(studentExistingDet);
                 //await context.Student.ExecuteDeleteAsync();
-                await context.Student.Where(x => x.Id == studentId).ExecuteDeleteAsync();
-                return true;
+                return await context.Student.Where(x => x.Id == studentId).ExecuteDeleteAsync();
             }
             else
             {
-                return false;
+                return -1;
             }
 
         }
