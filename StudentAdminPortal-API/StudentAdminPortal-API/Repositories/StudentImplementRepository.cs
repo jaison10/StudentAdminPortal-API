@@ -75,6 +75,11 @@ namespace StudentAdminPortal_API.Repositories
         //creating a new student.
         public async Task<Student> CreateNewStudent(DomainModels.RequestStudent createStudentDetails)
         {
+            var newstudent =  new Student
+            {
+
+            }
+
             context.Student.AddAsync(createStudentDetails);
             await context.Student.SaveChangesAsync();
         }
