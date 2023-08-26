@@ -10,5 +10,6 @@ namespace StudentAdminPortal_API.Repositories
         Task<List<Gender>> GetAllGenders();
         Task<Student> UpdateStudentDetails(Guid studentId, DomainModels.RequestStudent requestStudentDetails);
         Task<Student> DeleteAStudent(Guid studentId);
+        Task<Student> CreateNewStudent(DomainModels.RequestStudent createStudentDetails);
     }
 }
