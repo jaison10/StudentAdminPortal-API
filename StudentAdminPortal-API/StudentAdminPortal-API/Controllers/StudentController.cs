@@ -65,7 +65,7 @@ namespace StudentAdminPortal_API.Controllers
         }
         //fetching details of a specific student.
         [HttpGet]
-        [Route("[controller]/{studentId:guid}")] //name for which route this has to be executed. 
+        [Route("[controller]/{studentId:guid}"), ActionName("GetStudent")] //name for which route this has to be executed. 
         public async Task<IActionResult> GetStudent([FromRoute] Guid studentId)
         {
             
@@ -115,7 +115,11 @@ namespace StudentAdminPortal_API.Controllers
         public async Task<IActionResult> CreateStudent([FromBody] DomainModels.NewStudentData createStudentDetails)
         {
             var createdstudent = await studentRepository.CreateNewStudent(mapper.Map<Student>(createStudentDetails));
-            return Ok(mapper.Map<Student>(createdstudent));
+            //return Ok(mapper.Map<DomainModels.Student>(createdstudent));
+            return CreatedAtAction
+                (nameof(GetStudent),
+                new { studentId = createdstudent.Id },
+                mapper.Map<DomainModels.Student>(createdstudent));
         }
     }
 }
