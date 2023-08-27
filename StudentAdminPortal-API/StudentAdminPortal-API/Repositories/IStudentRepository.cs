@@ -1,4 +1,5 @@
-﻿using StudentAdminPortal_API.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using StudentAdminPortal_API.Models;
 
 namespace StudentAdminPortal_API.Repositories
 {
@@ -10,6 +11,6 @@ namespace StudentAdminPortal_API.Repositories
         Task<List<Gender>> GetAllGenders();
         Task<Student> UpdateStudentDetails(Guid studentId, DomainModels.RequestStudent requestStudentDetails);
         Task<Student> DeleteAStudent(Guid studentId);
-        Task<Student> CreateNewStudent(DomainModels.RequestStudent createStudentDetails);
+        Task<Student> CreateNewStudent(Student createStudentDetails);
     }
 }

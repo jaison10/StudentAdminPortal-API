@@ -3,7 +3,7 @@ using DomainModels = StudentAdminPortal_API.DomainModels;
 using StudentAdminPortal_API.Repositories;
 using System.Net.NetworkInformation;
 using AutoMapper;
-using StudentAdminPortal_API.DomainModels;
+using StudentAdminPortal_API.Models;
 
 namespace StudentAdminPortal_API.Controllers
 {
@@ -12,7 +12,6 @@ namespace StudentAdminPortal_API.Controllers
     {
         private readonly IStudentRepository studentRepository;
         private readonly IMapper mapper;
-        private RouteAttribute routeAttribute;
 
         public StudentController(IStudentRepository studentRepository, IMapper mapper)
         {
@@ -109,6 +108,14 @@ namespace StudentAdminPortal_API.Controllers
             {
                 return NotFound();
             }
+        }
+        //Create a new student
+        [HttpPost]
+        [Route("[controller]")]
+        public async Task<IActionResult> CreateStudent([FromBody] DomainModels.NewStudentData createStudentDetails)
+        {
+            var createdstudent = await studentRepository.CreateNewStudent(mapper.Map<Student>(createStudentDetails));
+            return Ok(mapper.Map<Student>(createdstudent));
         }
     }
 }

@@ -2,7 +2,6 @@
 using StudentAdminPortal_API.Data;
 using DomainModels = StudentAdminPortal_API.DomainModels;
 using StudentAdminPortal_API.Models;
-using System.Formats.Asn1;
 
 namespace StudentAdminPortal_API.Repositories
 {
@@ -73,15 +72,11 @@ namespace StudentAdminPortal_API.Repositories
             }
         }
         //creating a new student.
-        public async Task<Student> CreateNewStudent(DomainModels.RequestStudent createStudentDetails)
+        public async Task<Student> CreateNewStudent(Student createStudentDetails)
         {
-            var newstudent =  new Student
-            {
-
-            }
-
-            context.Student.AddAsync(createStudentDetails);
-            await context.Student.SaveChangesAsync();
+            var student = await context.Student.AddAsync(createStudentDetails);
+            await context.SaveChangesAsync();
+            return student.Entity;
         }
     }
 }
