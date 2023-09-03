@@ -127,6 +127,20 @@ namespace StudentAdminPortal_API.Controllers
         [Route("[controller]/{studentId:guid}/upload-profile")]
         public async Task<IActionResult> UploadProfile([FromRoute] Guid studentId, IFormFile file )
         {
+            var validExtensions = new List<String>
+            {
+                "jpg", "png", "jpeg"
+            };
+
+            if (file == null || file.Length == 0 ||)
+            {
+                return NotFound();
+            }
+            else if(validExtensions.Contains(Path.GetExtension(file.FileName)) == false)
+            {
+                return BadRequest("This is not a valid image format.")
+            }
+
             //getting the extension of the filename given and appending with a GUID
             var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
 
