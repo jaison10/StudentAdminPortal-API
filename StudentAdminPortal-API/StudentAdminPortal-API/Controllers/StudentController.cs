@@ -12,11 +12,13 @@ namespace StudentAdminPortal_API.Controllers
     {
         private readonly IStudentRepository studentRepository;
         private readonly IMapper mapper;
+        private readonly IImageRepository imageRepository;
 
-        public StudentController(IStudentRepository studentRepository, IMapper mapper)
+        public StudentController(IStudentRepository studentRepository, IMapper mapper, IImageRepository imageRepository)
         {
             this.studentRepository = studentRepository;
             this.mapper = mapper;
+            this.imageRepository = imageRepository;
         }
 
         [HttpGet]
@@ -120,6 +122,26 @@ namespace StudentAdminPortal_API.Controllers
                 (nameof(GetStudent),
                 new { studentId = createdstudent.Id },
                 mapper.Map<DomainModels.Student>(createdstudent));
+        }
+        [HttpPost]
+        [Route("[controller]/{studentId:guid}/upload-profile")]
+        public async Task<IActionResult> UploadProfile([FromRoute] Guid studentId, IFormFile file )
+        {
+            //getting the extension of the filename given and appending with a GUID
+            var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+
+            fileName = await imageRepository.UploadImage(file, fileName);
+            //if( await studentRepository.UploadImageURL(studentId, fileName))
+            //{
+            //    return Ok(fileName);
+
+            //}
+            //else
+            //{
+            //    return StatusCode(StatusCodes.Status500InternalServerError, "Error occured while uploading image");
+            //}
+            var studentDet = await studentRepository.UploadImageURL(studentId, fileName);
+            return Ok(mapper.Map<DomainModels.Student>(studentDet));
         }
     }
 }

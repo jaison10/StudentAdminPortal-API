@@ -20,6 +20,7 @@ builder.Services.AddDbContext<StudentAdminContext>(options =>
 //when Istudentrepo is accessed, object of which class needs to be created shud be specified here.
 //here when IStudentRepository is accessed in StudentController, I need to create object of StudentImplementRepository.
 builder.Services.AddScoped<IStudentRepository, StudentImplementRepository>();
+builder.Services.AddScoped<IImageRepository, ImageStoreLocalImplement>();
 
 //Here specifying which auto mapping needs to be considered.
 //Here "typeof(Program).Assembly" will point to the parent of Program file which includes all the files 
