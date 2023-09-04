@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAxKPLK20SMkKQtzDLEWRK3wAAAAACAAAAAAAQZgAAAAEAACAAAAAm5EmVyxKGFcSRP+zh/UUemICupAdLaPWZaxfpdPjCKwAAAAAOgAAAAAIAACAAAABfNxaPDKxy0pEkYZjwX8p88AJWTxZ3rFwu0zatKbclqoAAAACg5JOuCCnNZQQRKLGmrXmUYnp1OELmEZZf5RevEfcFU0fpMh9t2Th6INXVTewp3WXfVcF4UfLgZppb+dgmUs9nNgyRNwFEj+DZV5FuRUnPzqsDoG5HL/KKw27uhXoxO0n01hWmGbG4xJyQH2DbgPHCozXUsMF3ckPZGronPje/H0AAAAD+qr6VjUet6hydc00a4oIuivK8CIXTIWPRmg0XF+nRR8KhjCu33fBoCD/RSTy/4qbpJxNZ1UnH/QGVlTKazeOt</EncryptedPassword>
+    <History>True|2023-09-04T08:34:16.3026338Z;True|2023-09-04T13:51:25.9344448+05:30;True|2023-09-04T13:04:32.8337995+05:30;False|2023-09-04T13:03:04.9284898+05:30;False|2023-09-04T13:01:21.8876051+05:30;True|2023-09-04T12:43:43.1046128+05:30;False|2023-09-04T12:41:36.9907319+05:30;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="StudentAdminPortalConn">
+      <Value>Data Source=studentadminportaldbserver.database.windows.net,1433%3bInitial Catalog=StudentAdminPortal%3bUser ID=jaixon%3bPassword=Jaison10%40</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="StudentAdminPortal_API.Data.StudentAdminContext">
+      <Value>Data Source=studentadminportaldbserver.database.windows.net,1433%3bInitial Catalog=StudentAdminPortal%3bUser ID=jaixon%3bPassword=Jaison10%40</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2023-09-04T10:16:17.7930522Z"
+    },
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2023-09-04T10:14:53.097575Z"
+    }
+  },
+  "parameters": {
+    "mssql1.subscriptionId": {
+      "Name": "mssql1.subscriptionId",
+      "Type": "subscription",
+      "Value": "76833140-d40c-4076-b23b-c18b7a927295"
+    },
+    "mssql1.resourceGroupName": {
+      "Name": "mssql1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "ResourceGroupStudentAdminPortal-API"
+    }
+  }
+}

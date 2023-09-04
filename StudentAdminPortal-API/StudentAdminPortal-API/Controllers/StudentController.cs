@@ -132,13 +132,13 @@ namespace StudentAdminPortal_API.Controllers
                 "jpg", "png", "jpeg"
             };
 
-            if (file == null || file.Length == 0 ||)
+            if (file == null || file.Length == 0)
             {
                 return NotFound();
             }
             else if(validExtensions.Contains(Path.GetExtension(file.FileName)) == false)
             {
-                return BadRequest("This is not a valid image format.")
+                return BadRequest("This is not a valid image format.");
             }
 
             //getting the extension of the filename given and appending with a GUID

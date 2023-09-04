@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="StudentAdminPortal-API" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^F:\\DotNet\\ASPNETWEBAPI\\StudentPortal\\StudentAdminPortal-API\\StudentAdminPortal-API\\StudentAdminPortal-API\\obj\\Release\\net6\.0\\PubTmp\\Out\\$" />
+  </parameter>
+  <parameter name="StudentAdminPortal_API.Data.StudentAdminContext" description="" value="Data Source=studentadminportaldbserver.database.windows.net,1433;Initial Catalog=StudentAdminPortal;User ID=jaixon;Password=Jaison10@" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^F:\\DotNet\\ASPNETWEBAPI\\StudentPortal\\StudentAdminPortal-API\\StudentAdminPortal-API\\StudentAdminPortal-API\\obj\\Release\\net6\.0\\PubTmp\\EFSQLScripts\\StudentAdminPortal_API\.Data\.StudentAdminContext\.sql$" />
+  </parameter>
+</parameters>
