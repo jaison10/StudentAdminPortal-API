@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>StudentAdminPortal_API</RootNamespace>
+    <UserSecretsId>94a2a128-105d-4ff0-a06e-d7ed24e0c3fe</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

@@ -129,7 +129,7 @@ namespace StudentAdminPortal_API.Controllers
         {
             var validExtensions = new List<String>
             {
-                "jpg", "png", "jpeg"
+                ".jpg", ".png", ".jpeg"
             };
 
             if (file == null || file.Length == 0)
